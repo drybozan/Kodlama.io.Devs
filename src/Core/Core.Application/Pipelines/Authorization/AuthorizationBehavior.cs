@@ -30,4 +30,9 @@ public class AuthorizationBehavior<TRequest, TResponse> : IPipelineBehavior<TReq
         TResponse response = await next();
         return response;
     }
+
+    Task<TResponse> IPipelineBehavior<TRequest, TResponse>.Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -54,4 +54,9 @@ public class CachingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
 
         return response;
     }
+
+    Task<TResponse> IPipelineBehavior<TRequest, TResponse>.Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
 }
