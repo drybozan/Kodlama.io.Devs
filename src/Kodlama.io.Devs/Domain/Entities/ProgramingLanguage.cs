@@ -12,7 +12,7 @@ namespace Domain.Entities
         public string Name { get; set; }
         public ProgramingLanguage()
         {
-           
+          
         }
 
         public ProgramingLanguage(int id,string name):this() /// bu classın parametresiz yapıcı metodu da çalışsın

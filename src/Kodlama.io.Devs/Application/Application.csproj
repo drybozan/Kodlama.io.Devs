@@ -12,7 +12,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\" />
+    <Folder Include="Features\ProgramingLanguages\Constants\" />
+    <Folder Include="Features\ProgramingLanguages\Models\" />
+    <Folder Include="Features\ProgramingLanguages\Rules\" />
+    <Folder Include="Features\ProgramingLanguages\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
   </ItemGroup>
 
 </Project>
