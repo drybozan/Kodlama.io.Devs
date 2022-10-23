@@ -1,4 +1,5 @@
 ﻿using Application.Features.ProgramingLanguages.Dtos;
+using Application.Features.ProgramingLanguages.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
@@ -13,7 +14,7 @@ namespace Application.Features.ProgramingLanguages.Commands
 {
     public partial class CreateProgramingLanguageCommand:IRequest<CreatedProgramingLanguageDto>
     {
-        public string programingLanguageName { get; set; }
+        public string Name { get; set; }
 
 
 
@@ -24,20 +25,20 @@ namespace Application.Features.ProgramingLanguages.Commands
             //entity ile dtoları mapler
             private readonly IMapper _mapper;
             // bu entity için kurallarım
-            //private readonly BrandBusinessRules _brandBusinessRules;
+            private readonly ProgramingLanguageBusinessRules _programingLanguageBusinessRules;
 
 
-            public CreateProgramingLanguageCommandHandler(IProgramingLanguageRepository programingLanguageRepository, IMapper mapper)
+            public CreateProgramingLanguageCommandHandler(IProgramingLanguageRepository programingLanguageRepository, IMapper mapper, ProgramingLanguageBusinessRules programingLanguageBusinessRules)
             {
                 _programingLanguageRepository = programingLanguageRepository;
                 _mapper = mapper;
-               // _brandBusinessRules = brandBusinessRules;
+                _programingLanguageBusinessRules = programingLanguageBusinessRules;
             }
 
             public async Task<CreatedProgramingLanguageDto> Handle(CreateProgramingLanguageCommand request, CancellationToken cancellationToken)
             {
            
-                //await _brandBusinessRules.BrandNameCanNotBeDuplicatedWhenInserted(request.Name);
+                await _programingLanguageBusinessRules.ProgramingLanguageNameCanNotBeDuplicatedWhenInserted(request.Name);
 
                 ProgramingLanguage mappedProgramingLanguage = _mapper.Map<ProgramingLanguage>(request);
                 ProgramingLanguage createdProgramingLanguage = await _programingLanguageRepository.AddAsync(mappedProgramingLanguage);

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core.CrossCuttingConcers\Core.CrossCuttingConcers.csproj" />
     <ProjectReference Include="..\..\Core\Core.Persistence\Core.Persistence.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
@@ -14,7 +15,6 @@
   <ItemGroup>
     <Folder Include="Features\ProgramingLanguages\Constants\" />
     <Folder Include="Features\ProgramingLanguages\Models\" />
-    <Folder Include="Features\ProgramingLanguages\Rules\" />
     <Folder Include="Features\ProgramingLanguages\Queries\" />
   </ItemGroup>
 

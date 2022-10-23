@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Application.Features.ProgramingLanguages.Rules;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
-           // services.AddScoped<BrandBusinessRules>();
+            services.AddScoped<ProgramingLanguageBusinessRules>();
            // services.AddScoped<AuthBusinessRules>();
 
            // services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
