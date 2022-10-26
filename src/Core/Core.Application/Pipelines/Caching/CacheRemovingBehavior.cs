@@ -17,8 +17,7 @@ public class CacheRemovingBehavior<TRequest, TResponse> : IPipelineBehavior<TReq
         _logger = logger;
     }
 
-    public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
-                                        RequestHandlerDelegate<TResponse> next)
+    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
         TResponse response;
         if (request.BypassCache) return await next();
@@ -36,8 +35,4 @@ public class CacheRemovingBehavior<TRequest, TResponse> : IPipelineBehavior<TReq
         return response;
     }
 
-    Task<TResponse> IPipelineBehavior<TRequest, TResponse>.Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
 }

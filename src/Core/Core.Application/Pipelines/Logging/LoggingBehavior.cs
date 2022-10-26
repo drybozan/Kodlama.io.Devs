@@ -19,8 +19,7 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
-                                  RequestHandlerDelegate<TResponse> next)
+    public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
         List<LogParameter> logParameters = new();
         logParameters.Add(new LogParameter
@@ -44,8 +43,4 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
         return next();
     }
 
-    Task<TResponse> IPipelineBehavior<TRequest, TResponse>.Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
 }

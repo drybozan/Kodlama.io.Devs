@@ -1,5 +1,6 @@
 ﻿using Application.Features.ProgramingLanguages.Commands;
 using Application.Features.ProgramingLanguages.Dtos;
+using Application.Features.ProgramingLanguages.Models;
 using AutoMapper;
 using Core.Persistence.Paging;
 using Domain.Entities;
@@ -21,7 +22,10 @@ namespace Application.Features.ProgramingLanguages.Profiles
         {
             CreateMap<ProgramingLanguage, CreatedProgramingLanguageDto>().ReverseMap();
             CreateMap<ProgramingLanguage, CreateProgramingLanguageCommand>().ReverseMap();
+            CreateMap<IPaginate<ProgramingLanguage>, ProgramingLanguageListModel>().ReverseMap();
+            CreateMap<ProgramingLanguage, ProgramingLanguageListDto>().ReverseMap();
            
+
         }
     }
 }

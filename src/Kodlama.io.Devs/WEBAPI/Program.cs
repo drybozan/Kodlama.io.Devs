@@ -35,7 +35,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 
-app.ConfigureCustomExceptionMiddleware(); // hata çýktýlarýný düzenli gösterir.
+//app.ConfigureCustomExceptionMiddleware(); // hata çýktýlarýný düzenli gösterir.
 
 app.MapControllers();
 
