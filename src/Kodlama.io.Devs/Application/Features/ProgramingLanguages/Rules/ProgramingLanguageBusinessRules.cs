@@ -20,6 +20,7 @@ namespace Application.Features.ProgramingLanguages.Rules
             this._programingLanguageRepository = programingLanguageRepository;
         }
 
+        // varlık, db de zaten varsa uyar
         public async Task ProgramingLanguageNameCanNotBeDuplicatedWhenInserted(string name)
         {
             IPaginate<ProgramingLanguage> result = await _programingLanguageRepository.GetListAsync(p => p.Name == name);
@@ -28,10 +29,22 @@ namespace Application.Features.ProgramingLanguages.Rules
         }
 
 
-   
+        // istenilen varlık yoksa uyar
         public void ProgramingLanguageShouldExistWhenRequested(ProgramingLanguage language)
         {
             if (language == null) throw new BusinessException("İstenilen dil mevcut değil.");
         }
+        // istenilen varlık yoksa uyar
+        public void ProgramingLanguageShouldExistWhenUpdated(ProgramingLanguage language)
+        {
+            if (language == null) throw new BusinessException("Güncellemek istediğiniz dil mevcut değil.");
+        }
+
+        public void ProgramingLanguageShouldExistWhenDeleteRequested(ProgramingLanguage language)
+        {
+            if (language == null) throw new BusinessException("Silmek istediğiniz dil mevcut değil.");
+        }
+
+
     }
 }
