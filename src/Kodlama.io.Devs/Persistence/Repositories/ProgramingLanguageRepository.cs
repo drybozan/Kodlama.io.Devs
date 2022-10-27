@@ -12,7 +12,7 @@ namespace Persistence.Repositories
 {
     public class ProgramingLanguageRepository : EfRepositoryBase<ProgramingLanguage, BaseDbContext>, IProgramingLanguageRepository
     {
-        public ProgramingLanguageRepository(BaseDbContext context) : base(context) //base, miras aldığı claasın constructorına Brand Context ile git
+        public ProgramingLanguageRepository(BaseDbContext context) : base(context) //base, miras aldığı claasın constructorına  Context ile git
         {
         }
 

@@ -17,6 +17,7 @@ namespace Persistence.Context
         protected IConfiguration Configuration { get; set; }
         // entityler ile DBnin ilişildiği kısım
         public DbSet<ProgramingLanguage> ProgramingLanguage { get; set; }
+        public DbSet<Technology> Technologies { get; set; }
        
 
       
@@ -43,14 +44,27 @@ namespace Persistence.Context
                 a.ToTable("ProgramingLanguageTbl").HasKey(k => k.Id);
                 a.Property(p => p.Id).HasColumnName("Id");
                 a.Property(p => p.Name).HasColumnName("Name");
+                a.HasMany(p => p.Technologies); //1-n ilişki
               
             });
-                     
+            modelBuilder.Entity<Technology>(a =>
+            {
+                a.ToTable("TechnologyTbl").HasKey(k => k.Id);
+                a.Property(p => p.Id).HasColumnName("Id");
+                a.Property(p => p.Name).HasColumnName("Name");
+                a.Property(p => p.ProgramingLanguageId).HasColumnName("ProgramingLanguageId");
+                a.HasOne(p=>p.ProgramingLanguage); // n-1 ilişki
 
-            /// Seed data tablo oluşturulrken içinde hali hazırda bulunduracak datalar demektir.
-           ProgramingLanguage [] programingLanguageEntitySeeds = { new(1, "C#"), new(2, "Java") };
+            });
+
+
+
+            // Seed data tablo oluşturulrken içinde hali hazırda bulunduracak datalar demektir.
+            ProgramingLanguage[] programingLanguageEntitySeeds = { new(1, "C#"), new(2, "Java") };
             modelBuilder.Entity<ProgramingLanguage>().HasData(programingLanguageEntitySeeds);
 
+            Technology[] technologyEntitySeeds = { new(1,1,"WPF"), new(2,1,".Net") ,new(3, 2, "Spring"), new(4, 2, "JSP") };
+            modelBuilder.Entity<Technology>().HasData(technologyEntitySeeds);
 
 
         }
