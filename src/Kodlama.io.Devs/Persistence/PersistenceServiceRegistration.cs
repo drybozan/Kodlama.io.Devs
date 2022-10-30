@@ -24,6 +24,11 @@ namespace Persistence
             //IProgramingLanguageRepository istendiğinde ona ProgramingLanguageRepository i gönder
             services.AddScoped<IProgramingLanguageRepository, ProgramingLanguageRepository>(); 
             services.AddScoped<ITechnologyRepository, TechnologyRepository>();
+            services.AddScoped<IGithubRepository, GithubRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+            services.AddScoped<IOperationClaimRepository, OperationClaimRepository>();
+            services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
 
             return services;
         }
